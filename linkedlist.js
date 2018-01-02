@@ -175,17 +175,34 @@ console.log(list.size());
 console.log('---------- 双向链表 DoublyLinkedList -------------');
 
 function DoublyLinkedList () {
-	let node = function (element) {
+	let Node = function (element) {
 		this.element = element;
 		this.next = null;
 		this.prev = null;
 	}
 
 	let index = 0;
+	let length = 0;
 	let head = null;
 	let tail = null; // 最后的元素指针
-
-
+	/**
+	 * 向列表尾部添加一个新的项
+	 * @param {*} element 
+	 */ 
+	this.append = function (element) {
+		let node = new Node(element)
+		let current = tail;
+		if (head == null) {
+			head = node;
+			tail = node;
+		} else {
+			current.next = node;
+			node.prev = current;
+			tail = node
+		}
+		length++;
+	}	
+	
 	/**
 	 * 在任意位置插入新元素
 	 */ 
@@ -268,4 +285,44 @@ function DoublyLinkedList () {
 			return null;
 		}
 	}
+
+	this.remove = function () {
+		
+	}
+
+	this.isEmpty = function () {
+		return length === 0;
+	}
+
+	this.size = function () {
+		return length
+	}
+
+	this.indexOf = function (element) {
+		let currrent = head;
+		index = 0;
+		while(current) {
+			if(element == currrent.element) {
+				return index
+			}
+			index++;
+			currrent = currrent.next;
+		}
+		return -1
+	}
+
+	this.getHead = function () {
+		return head
+	}
+
+	this.getTail = function () {
+		return tail
+	}
 }
+
+let doublyLinks = new DoublyLinkedList();
+doublyLinks.append(15);
+doublyLinks.append(10);
+doublyLinks.append(20);
+// console.log(doublyLinks.indexOf(15));
+console.log(doublyLinks.size());
