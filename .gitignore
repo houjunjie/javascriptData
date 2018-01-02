@@ -1,13 +1,13 @@
-.DS_Store
 .cache
-node_modules/
-/dist/
-npm-debug.log*
-
-# Editor directories and files
+dist
+node_modules
+yarn.lock
+npm-debug.log
+# ide
 .idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+
+# Mac General
+.DS_Store
+.AppleDouble
+.LSOverride
+
